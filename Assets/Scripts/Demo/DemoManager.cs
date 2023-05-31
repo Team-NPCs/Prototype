@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using TMPro;
+using UnityEngine.UI;
 
 public class DemoManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class DemoManager : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
 
     [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private Button mainMenuBtn;
 
     private int _currentPlayerTypeIndex;
     private int _currentTilemapIndex;
@@ -22,6 +24,12 @@ public class DemoManager : MonoBehaviour
     {
         _cam = FindObjectOfType<Camera>();
         _player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
+
+        mainMenuBtn.onClick.AddListener(() =>
+        {
+            Debug.Log("Main Menu Button Clicked");
+            Loader.Load(Loader.Scene.MainMenu);
+        });
     }
 
     private void Start()
